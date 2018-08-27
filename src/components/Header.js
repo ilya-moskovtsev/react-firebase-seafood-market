@@ -11,7 +11,8 @@ class Header extends React.Component {
                     </span>
                     Day</h1>
                 <h3 className="tagline">
-                    <span>Fresh Seafood Market</span>
+                    {/*passing dynamic data with props*/}
+                    <span>{this.props.tagline}</span>
                 </h3>
             </header>
         );
