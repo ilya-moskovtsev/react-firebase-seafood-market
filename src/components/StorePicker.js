@@ -29,10 +29,11 @@ class StorePicker extends React.Component {
         // prevent page refresh
         event.preventDefault();
         // 2. Get the text from the input
-        console.log(this.storeNameInput);
-        // 3. Change the page to /store/whatever-they-entered
+        const storeName = this.storeNameInput.value.value;
+        // 3. Change the page to /store/whatever-they-entered without refreshing
+        // push is a ReactRouter method
+        this.props.history.push(`/store/${storeName}`);
     };
-
 
     render() {
         //too complex
