@@ -50,7 +50,8 @@ class App extends React.Component {
                         />)}
                     </ul>
                 </div>
-                <Order/>
+                {/* Displaying Order State with JSX */}
+                <Order fishes={this.state.fishes} order={this.state.order}/>
                 <Inventory addFish={this.addFish} loadSampleFishes={this.loadSampleFishes}/>
             </div>
         );
