@@ -14,8 +14,15 @@ class App extends React.Component {
 
     // React Lifecycle method
     componentDidMount() {
+        console.log('Mounted');
         // name of the store
         const storeId = this.props.match.params.storeId;
+        // Persisting Order State with Local Storage
+        const orderStr = localStorage.getItem(`order in store: ${storeId}`);
+        if (orderStr) {
+            this.setState({order: JSON.parse(orderStr)});
+        }
+
         // Mirror our fish state over to what is our firebase.
         // this ref is different from input ref
         // this ref is a reference to the database
@@ -25,7 +32,14 @@ class App extends React.Component {
             context: this,
             state: 'fishes'
         });
-        console.log('Mounted');
+    }
+
+    componentDidUpdate() {
+        console.log('Updated');
+        // Persisting Order State with Local Storage
+        localStorage.setItem(
+            `order in store: ${this.props.match.params.storeId}`,
+            JSON.stringify(this.state.order));
     }
 
     componentWillUnmount() {

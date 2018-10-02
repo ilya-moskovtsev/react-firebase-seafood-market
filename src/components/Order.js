@@ -7,6 +7,10 @@ class Order extends React.Component {
         <ul className="order">
             {orderKeys.map((key) => {
                 const fish = this.props.fishes[key];
+                if (!fish) {
+                    // Do not render until fish is loaded from firebase to State
+                    return null;
+                }
                 const count = this.props.order[key];
                 const fishName = fish.name || 'fish';
                 const isAvailable = fish && fish.price && fish.status === 'available';
